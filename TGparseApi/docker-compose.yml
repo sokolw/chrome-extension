@@ -1,0 +1,38 @@
+version: '3.0'
+
+services:
+  # tgmessages-postgres:
+  #   image: tgmessages-postgres
+  #   build: ./DB
+  #   ports:
+  #     - ${POSTGRES_PORT}:${POSTGRES_PORT}
+  #   environment:
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  #   restart: always
+
+# https://stackoverflow.com/questions/63133630/is-it-possible-to-create-a-volume-with-microsoft-sql-server-docker-container
+# https://stackoverflow.com/questions/65601077/unable-to-run-sql-server-2019-docker-with-volumes-and-get-error-setup-failed-co
+  tgmessages-mssql:
+    image: tgmessages-mssql
+    build: ./DBMicrosoftSQLServer
+    user: root
+    ports:
+      - ${MSSQL_PORT}:${MSSQL_PORT}
+    environment:
+      MSSQL_SA_PASSWORD: ${MSSQL_PASSWORD}
+      ACCEPT_EULA: Y
+    volumes:
+      - mssqldata:/var/opt/mssql/data
+      - mssqllog:/var/opt/mssql/log
+      - mssqlsecrets:/var/opt/mssql/secrets
+    restart: always
+
+volumes:
+  # pgdata:
+  mssqldata:
+  mssqllog:
+  mssqlsecrets:
