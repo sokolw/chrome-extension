@@ -134,7 +134,7 @@ const contentScript = async (options) => {
           'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(parseChatResult.result),
+        body: JSON.stringify(parseChatResult),
       });
     } catch {
       alert('Server is not available');
