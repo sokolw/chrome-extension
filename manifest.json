@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Telegram parse",
+  "version": "0.1",
+  "description": "Get msgs from Telegram",
+  "icons": {
+      "128": "tg.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "permissions": [
+    "scripting",
+    "tabs",
+    "storage",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "https://web.telegram.org/k/"
+  ]
+}

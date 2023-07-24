@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <div class="info">
+      <h1 class="info__title">TGparse</h1>
+      <a class="info__link" href="https://web.telegram.org/k/" target="_blank">Open site TG</a>
+    </div>
+    <div class="controls">
+      <button class="start-parse btn">Start</button>
+      <button class="stop-parse btn">Stop</button>
+      <!-- <button class="reload-parse btn">Reload</button> -->
+      <button class="start-test btn">Test</button>
+    </div>
+    <div class="options">
+      <h2>Options:</h2>
+      <div class="option">
+        <label for="server-url">Url: </label>
+        <input type="text" name="serverUrl" id="server-url" value="https://localhost:7000/api/tgmessages">
+      </div>
+      <div class="option">
+        <label for="chat-loading-delay">Chat loading delay(ms): </label>
+        <input type="text" name="chatLoadingDelay" id="chat-loading-delay" value="10000">
+      </div>
+      <div class="option">
+        <label for="chat-url">Chat url: </label>
+        <input type="text" name="chatUrl" id="chat-url" value="https://web.telegram.org/k/#-1424830228">
+        <button class="add-chat btn">Add chat</button>
+      </div>
+    </div>
+    <script src="./popup.js" type="module"></script>
+  </body>
+</html>
