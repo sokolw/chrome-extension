@@ -128,17 +128,22 @@ const contentScript = async (options) => {
     await openChat(chatUrl);
     await waitWhile(options.chatLoadingDelay);
     const parseChatResult = await parseChat();
-    // await fetch(options.serverUrl, {
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   method: 'POST',
-    //   body: JSON.stringify(parseChatResult.result),
-    // })
-    parseResult.push(...parseChatResult);
+    try {
+      await fetch(options.serverUrl, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(parseChatResult.result),
+      });
+    } catch {
+      alert('Server is not available');
+    }
+    
+    // parseResult.push(...parseChatResult);
   }
 
-  console.log(parseResult);
+  // console.log(parseResult);
   port.disconnect();
 };
 
