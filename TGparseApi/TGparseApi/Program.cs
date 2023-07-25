@@ -10,6 +10,16 @@ namespace TGparseApi
     {
       var builder = WebApplication.CreateBuilder(args);
 
+      var origins = "_origins";
+      builder.Services.AddCors(options =>
+      {
+        options.AddPolicy(name: origins,
+                          policy =>
+                          {
+                            policy.WithOrigins("https://web.telegram.org").AllowAnyHeader();
+                          });
+      });
+
       var dbConnectionConfiguration = builder.Configuration.GetConnectionString("tgparse-mssql");
 
       // Add services to the container.
@@ -42,6 +52,8 @@ namespace TGparseApi
       }
 
       app.UseHttpsRedirection();
+
+      app.UseCors(origins);
 
       //app.UseAuthorization();
 
